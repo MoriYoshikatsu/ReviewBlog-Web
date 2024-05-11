@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewpostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ReviewpostController::class, 'index']);
+
+Route::get('/test', [ReviewpostController::class, 'indexText']);
+
+Route::get('/test/{post}', [ReviewpostController::class, 'showText']);
+
+// ルーティングを定義しましょう。（「(ルーティングを書く)」と書かれている部分を変えましょう）
+Route::get('/test/{post}/tags/{tag}', [ReviewpostController::class, 'legend']);
